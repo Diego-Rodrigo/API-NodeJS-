@@ -1,5 +1,4 @@
 const express = require('express');
-//const mongoose = require('mongoose');
 const routes = require('./routes');
 
 
@@ -11,7 +10,8 @@ app.use(express.urlencoded({extended : false}));
 
 app.use(routes);
 
-require('./controllers/authController')(app);
-require('./controllers/projectController')(app);
+require('./app/controllers/index')(app);
+
+
 
 app.listen(3333);

@@ -1,12 +1,12 @@
-const connection = require('../database/connection');
+const connection = require('../../database/connection');
 
 
 module.exports = {
     async create(req, res){
-        const { EMAIL, PASSWORD} = req.body;
+        const { email, password} = req.body;
     await connection('users').insert({
-        EMAIL,
-        PASSWORD
+        email,
+        password
     });
     return res.json();
     },

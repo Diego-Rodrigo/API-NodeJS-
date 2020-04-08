@@ -1,25 +1,8 @@
-const mongoose = require('../database/connection');
+const mongoose = require('../../database/connection');
 
 const bcrypt = require('bcryptjs');
 
 
-//const sqlite3 = require('sqlite3');
-//const knex = require('knex');
-//const sequelize = require('sequelize');
-
-//const db = require('../database/connection');
-
-/*module.exports = (sequelize, DataType) => {
-
-const User = sequelize.define ('users',{
-    name: Datatype.String,
-    email: Datatype.String,
-    password: DataType.String,
-    createAt: DataType.Date.now
-    });
-    return User;
-}
-*/
 const UserSchema = new mongoose.Schema({
     name:{
         type: String,
@@ -34,6 +17,14 @@ const UserSchema = new mongoose.Schema({
     password:{
         type: String,
         require: true,
+        select: false,
+    },
+    passwordResetToken:{
+        type: String,
+        select: false,
+    },
+    passwordResetExpires:{
+        type: Date,
         select: false,
     },
     createAt:{
@@ -52,7 +43,7 @@ UserSchema.pre('save', async function(next){
 
 
 
-const User = mongoose.model('users', UserSchema)
+const User = mongoose.model('User', UserSchema)
 
 module.exports  = User;
 
